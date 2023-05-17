@@ -1,37 +1,18 @@
-import { useForm } from 'react-hook-form'
+import { useState } from 'react'
+import '../styles/profile.css'
 
-const LoginScreen = () => {
-	const { register, handleSubmit } = useForm()
+const ProfileScreen = () => {
+  const [firstName] = useState('John')
 
-	const submitForm = (data) => {
-		console.log(data)
-	}
-
-	return (
-		<form onSubmit={handleSubmit(submitForm)}>
-			<div className='form-group'>
-				<label htmlFor='email'>Email</label>
-				<input
-					type='email'
-					className='form-input'
-					{...register('email')}
-					required
-				/>
-			</div>
-			<div className='form-group'>
-				<label htmlFor='password'>Password</label>
-				<input
-					type='password'
-					className='form-input'
-					{...register('password')}
-					required
-				/>
-			</div>
-			<button type='submit' className='button'>
-				Login
-			</button>
-		</form>
-	)
+  return (
+    <div className='unauthorized'>
+      <figure>{firstName.charAt(0).toUpperCase()}</figure>
+      <span>
+        Welcome <strong>{firstName}!</strong> You can view this page because
+        you're logged in
+      </span>
+    </div>
+  )
 }
 
-export default LoginScreen
+export default ProfileScreen
