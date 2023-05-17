@@ -1,10 +1,15 @@
 import { useForm } from 'react-hook-form'
+import { useDispatch, useSelector } from 'react-redux'
+import { loginUser } from '../features/user/userSlice'
 
 const LoginScreen = () => {
 	const { register, handleSubmit } = useForm()
+	const dispatch = useDispatch()
+	const { loading, error } = useSelector((state) => state.users)
 
 	const submitForm = (data) => {
 		console.log(data)
+		dispatch(loginUser(data))
 	}
 
 	return (
