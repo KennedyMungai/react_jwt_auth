@@ -28,6 +28,35 @@ export const registerUser = createAsyncThunk(
 	}
 )
 
+export const loginUser = createAsyncThunk(
+	'auth/login',
+	async ({ email, password }, { rejectWithValue }) =>
+	{
+		try
+		{
+			const config = {
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			}
+
+			const { data } = await axios.post(`${backendURL}/api/users/login`, { email, password }, config)
+			
+			localStorage.set('userToken': data.userToken)
+
+			return data
+		}
+		catch (error)
+		{
+			if (error.response && error.response.data.message) {
+				return rejectWithValue(error.response.data.message)
+			  } else {
+				return rejectWithValue(error.message)
+			  }
+		}
+	}
+)
+
 const initialState = {
 	loading: false,
 	userInfo: {},
