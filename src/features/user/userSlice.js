@@ -40,7 +40,21 @@ const userSlice = createSlice({
 	name: 'User',
 	initialState,
 	reducers: {},
-	extraReducers: {}
+	extraReducers: (builder) => {
+		builder
+			.addCase(registerUser.pending, (state) => {
+				state.loading = true
+				state.error = null
+			})
+			.addCase(registerUser.fulfilled, (state) => {
+				state.loading = false
+				state.success = true
+			})
+			.addCase(registerUser.rejected, (state, { payload }) => {
+				state.loading = false
+				state.error = payload
+			})
+	}
 })
 
 export default userSlice.reducer
