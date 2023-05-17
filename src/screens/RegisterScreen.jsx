@@ -4,6 +4,11 @@ import { registerUser } from '../features/user/userSlice'
 
 const RegisterScreen = () => {
 	const { register, handleSubmit } = useForm()
+	const { loading, userInfo, error, success } = useSelector(
+		(state) => state.users
+	)
+
+	const dispatch = useDispatch()
 
 	const submitForm = (data) => {
 		if (data.password !== data.confirmPassword) {
