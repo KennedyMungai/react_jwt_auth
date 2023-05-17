@@ -1,4 +1,6 @@
 import { useForm } from 'react-hook-form'
+import { useDispatch, useSelector } from 'react-redux'
+import { registerUser } from '../features/user/userSlice'
 
 const RegisterScreen = () => {
 	const { register, handleSubmit } = useForm()
