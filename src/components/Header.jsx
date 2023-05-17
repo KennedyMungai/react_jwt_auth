@@ -5,7 +5,7 @@ const Header = () => {
 	return (
 		<header>
 			<div className='header-status'>
-				<span>You're not logged in</span>
+				<span>Youre not logged in</span>
 				<div className='cta'>
 					<NavLink className='button' to='/login'>
 						Login
